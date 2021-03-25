@@ -36,7 +36,7 @@ scihub -s 123 -ns
 # specify the output directory
 scihub -s 1,2,3 -O out
 
-# overwrite or not when file existsing, default will ask
+# overwrite or not when file exists, default will ask
 scihub -s 1,2,3 -ow N
 scihub -s 1,2,3 -ow Y
 ```

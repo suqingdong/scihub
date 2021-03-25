@@ -42,7 +42,7 @@ contact: {author} <{author_email}>
 @click.option('-l', '--list', help='list only but not download the pdf', is_flag=True)
 @click.option('-c', '--check', help='check available urls of scihub', is_flag=True)
 @click.option('-ns', '--name-by-search', help='name by search string', is_flag=True)
-@click.option('-ow', '--overwrite', help='overwrite or not when file existsing', type=click.Choice('YN'))
+@click.option('-ow', '--overwrite', help='overwrite or not when file exists', type=click.Choice('YN'))
 @click.option('-t', '--timeout', help='the seconds of timeout for requesting', type=int, default=60, show_default=True)
 @click.version_option(version=version_info['version'], prog_name=version_info['prog'])
 def cli(**kwargs):
