@@ -1,4 +1,5 @@
 # PDF Downloader with SCI-HUB
+![](https://suqingdong.github.io/scihub/examples/tutorial.gif)
 
 ### Advantages
 - could detect url automaticly
