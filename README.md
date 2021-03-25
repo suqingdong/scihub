@@ -8,7 +8,7 @@
 
 ### Installation
 ```bash
-pip3 install scihub
+pip3 install sci-hub
 # or
 python3 -m pip install sci-hub
 ```
