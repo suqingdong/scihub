@@ -1,0 +1,5 @@
+click
+pillow
+matplotlib
+webrequests
+simple-loggers
