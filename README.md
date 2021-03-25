@@ -10,7 +10,7 @@
 ```bash
 pip3 install scihub
 # or
-python3 -m pip install scihub
+python3 -m pip install sci-hub
 ```
 
 ### Command Line Examples
