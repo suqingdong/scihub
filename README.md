@@ -4,11 +4,9 @@
 ![GitHub branch checks state](https://img.shields.io/github/checks-status/suqingdong/scihub/master)
 ![Python Version](https://img.shields.io/badge/python-v3.8-blue)
 
-<div style="background:url(https://suqingdong.github.io/scihub/examples/top-back.jpg)">
-<div style="width:50%; margin-left:auto;">
-<img src="https://suqingdong.github.io/scihub/examples/raven_1.png" height=60>
+<div>
+<img src="https://suqingdong.github.io/scihub/examples/raven_1.png" height=55>
 <img src="https://suqingdong.github.io/scihub/examples/logo_en.png" height=50>
-</div>
 </div>
 
 # PDF Downloader with SCI-HUB
