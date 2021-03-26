@@ -5,6 +5,7 @@ import random
 from collections import defaultdict
 
 import click
+import colorama
 from simple_loggers import SimpleLogger
 
 from scihub import version_info
@@ -12,25 +13,37 @@ from scihub.core import SciHub
 from scihub.util.host import check_host
 
 
+colorama.init()
+
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
-__epilog__ = click.style('''
-examples:
+prog = version_info['prog']
+author = version_info['author']
+author_email = version_info['author_email']
 
-    # check the available urls\n
-        {prog} -c
+__epilog__ = click.style(f'''\
+Examples:
 
-    # search pmid(s)\n
-        {prog} -s 1,2,3
+\b
+* check the available urls
+{colorama.Fore.CYAN}  {prog} -c  {colorama.Fore.RESET}
 
-    # search doi\n
-        {prog} -s 10.1038/s41524-017-0032-0
+\b
+* search pmid(s)
+{colorama.Fore.CYAN}  {prog} -s 1,2,3  {colorama.Fore.RESET}
 
-    # search with a specific url\n
-        {prog} -s 1,2,3 -u https://sci-hub.ren
+\b
+* search doi(s)
+{colorama.Fore.CYAN}  {prog} -s 10.1038/s41524-017-0032-0  {colorama.Fore.RESET}
 
-contact: {author} <{author_email}>
-'''.format(**version_info), fg='cyan')
+\b
+* search with a specific url
+{colorama.Fore.CYAN}  {prog} -s 1,2,3 -u https://sci-hub.ren  {colorama.Fore.RESET}
+
+{colorama.Fore.YELLOW}
+Contact: {author} <{author_email}>
+{colorama.Fore.RESET}
+''')
 
 @click.command(no_args_is_help=True,
                context_settings=CONTEXT_SETTINGS,
