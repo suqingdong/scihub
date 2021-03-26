@@ -1,8 +1,7 @@
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/suqingdong/scihub)
-![GitHub Release Date](https://img.shields.io/github/release-date/suqingdong/scihub)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/suqingdong/scihub)
-![GitHub branch checks state](https://img.shields.io/github/checks-status/suqingdong/scihub/master)
+![PyPI](https://img.shields.io/pypi/v/sci-hub)
 ![Python Version](https://img.shields.io/badge/python-v3.6+-blue)
+![PyPI - Status](https://img.shields.io/pypi/status/sci-hub)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/suqingdong/scihub)
 [![Downloads](https://pepy.tech/badge/sci-hub)](https://pepy.tech/project/sci-hub)
 
 <div>
