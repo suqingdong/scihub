@@ -1,3 +1,9 @@
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/suqingdong/scihub)
+![GitHub Release Date](https://img.shields.io/github/release-date/suqingdong/scihub)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/suqingdong/scihub)
+![GitHub branch checks state](https://img.shields.io/github/checks-status/suqingdong/scihub/master)
+![Python Version](https://img.shields.io/badge/python-v3.8-blue)
+
 <div style="background:url(https://suqingdong.github.io/scihub/examples/top-back.jpg)">
 <div style="width:50%; margin-left:auto;">
 <img src="https://suqingdong.github.io/scihub/examples/raven_1.png" height=60>
