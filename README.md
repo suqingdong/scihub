@@ -2,7 +2,7 @@
 ![Python Version](https://img.shields.io/badge/python-v3.6+-blue)
 ![PyPI - Status](https://img.shields.io/pypi/status/sci-hub)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/suqingdong/scihub)
-[![Downloads](https://pepy.tech/badge/sci-hub)](https://pepy.tech/project/sci-hub)
+[![Downloads](https://static.pepy.tech/personalized-badge/sci-hub?period=total&units=international_system&left_color=grey&right_color=orange&left_text=Downloads)](https://pepy.tech/project/sci-hub)
 
 <div>
 <img src="https://suqingdong.github.io/scihub/examples/raven_1.png" height=55>
