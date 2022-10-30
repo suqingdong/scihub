@@ -1,6 +1,7 @@
 import io
 import os
-
+import requests
+import json
 from matplotlib import pylab
 
 import click
@@ -57,6 +58,71 @@ class SciHub(object):
         self.logger.info(f'use url: {url}')
         return url
 
+    def search_oa(self, term):
+        """
+            term: URL, PMID, DOI or search string
+
+            return: the open access url of pdf
+        """
+        def pmid2doi(pmid):
+            url = f'https://api.ncbi.nlm.nih.gov/lit/ctxp/v1/pubmed/?format=csl&id={pmid}'
+            res = requests.get(url)
+            if res.status_code == 200:
+                return res.json()['DOI']
+            else:
+                return None
+
+        def title2doi(title):
+            url = ' https://api.oadoi.org/v2/search'
+            params = {'email':'unpaywall@impactstory.org',
+            'query':title}
+            res = requests.get(url, params=params)
+            if res.status_code == 200:
+                return res.json()['results'][0]['response']['doi']
+            else:
+                return None
+
+        def get_paper_info(doi):
+            url = f'https://api.openaccessbutton.org/find?id={doi}'
+            res = requests.get(url)
+            paper_info = res.json()['metadata']
+            oa_url = res.json().get('url')
+            return {'year': paper_info.get('year'),
+                    'title': paper_info.get('title'),
+                    'oa_url': oa_url,
+                    'journal': paper_info.get('journal'),
+                    'journal_short': paper_info.get('journal_short'),
+                    'first_author': paper_info.get('author')[0]['name'], }
+
+        def todoi(term):
+            doi = None
+            if ' ' in term:
+                self.logger.info('Input type: title')
+                doi = title2doi(term)
+                self.logger.info(f'Doi: {doi}')
+            elif '/' in term:
+                self.logger.info('Input type: doi')
+                doi = term
+            elif term.isnumeric():
+                self.logger.info('Input type: pmid')
+                doi = pmid2doi(term)
+                self.logger.info(f'Doi: {doi}')
+            else:
+                self.logger.warning('can not determine the type of the input term')
+            return doi
+
+        doi = todoi(term)
+        if doi:
+            paper_info = get_paper_info(doi)
+            self.logger.info(f'metadata of : {term}')
+            self.logger.info(json.dumps(paper_info, indent=4))
+            oa_url = paper_info['oa_url']
+            if oa_url and oa_url.endswith('pdf'):
+                return oa_url
+        else:
+            self.logger.warning(f'invalid input: {term}')
+            return None
+
     def search(self, term, max_try=3):
         """
             term: URL, PMID, DOI or search string
@@ -71,6 +137,14 @@ class SciHub(object):
             'sci-hub-plugin-check': '', 
             'request': term
         }
+        self.logger.debug(f'search OA url for: {term}')
+        oa_url = self.search_oa(term)
+        if oa_url:
+            self.logger.debug(f'Found OA url for: {term}')
+            return oa_url
+        else:
+            self.logger.debug(f'Found NO OA url for: {term}')
+            self.logger.debug(f'search in scihub')
 
         self.logger.debug(f'search pdf url for: {term}')
 
