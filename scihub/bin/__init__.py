@@ -57,6 +57,7 @@ Contact: {author} <{author_email}>
 @click.option('-ns', '--name-by-search', help='name by search string', is_flag=True)
 @click.option('-ow', '--overwrite', help='overwrite or not when file exists', type=click.Choice('YN'))
 @click.option('-t', '--timeout', help='the seconds of timeout for requesting', type=int, default=60, show_default=True)
+@click.option('-m', '--maxtry', help='times try to search in scihub', type=int, default=3, show_default=True)
 @click.version_option(version=version_info['version'], prog_name=version_info['prog'])
 def cli(**kwargs):
     start_time = time.time()
@@ -100,7 +101,7 @@ def cli(**kwargs):
     stat = defaultdict(list)
     for n, search in enumerate(search_list, 1):
         logger.debug(f'[{n}/{len(search_list)}] searching: {search}')
-        url = sh.search(search)
+        url = sh.search(search, max_try=kwargs['maxtry'])
         if url:
             if kwargs['list']:
                 logger.info(f'{search}: {url}')
@@ -116,7 +117,7 @@ def cli(**kwargs):
 
     logger.info(f'success: {len(stat["success"])}, failed: {len(stat["failed"])}')
     if stat['failed']:
-        logger.info('failed list: {", ".join(stat["failed"])}')
+        logger.info(f'failed list: ,{",".join(stat["failed"])}'.replace(',','\n'))
 
     elapsed = time.time() - start_time
     logger.info(f'time elapsed: {elapsed:.2f}s')
