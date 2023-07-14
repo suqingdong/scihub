@@ -106,7 +106,7 @@ def cli(**kwargs):
                 logger.info(f'{search}: {url}')
             else:
                 filename = f'{search}.pdf' if kwargs['name_by_search'] else None
-                sh.download(url, outdir=kwargs['outdir'], filename=filename, overwrite=overwrite)
+                sh.download(url, outdir=kwargs['outdir'], filename=filename.replace('/', "%"), overwrite=overwrite)
             stat['success'].append(search)
         else:
             stat['failed'].append(search)
